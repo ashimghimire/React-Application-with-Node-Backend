@@ -1,13 +1,17 @@
 var createError = require('http-errors');
 
-var isAuthenticated = function(options) {
-	return function (req, res, next) {
-	if(req.isAuthenticated()) next();
-	else res.redirect("/admin/logout");
-	}
+var njwt = require('njwt');
 
+var isAuthenticated = function(req, res, next) {
+	njwt.verify(req.headers.token,"helpme",function(err,verifiedJwt){
+		if(err){
+			res.status(401).send(createError(401))
+		}else{
+			next();
+		}
+		});	
 }
 
-module.exports={
+module.exports = {
 	isAuthenticated
 }

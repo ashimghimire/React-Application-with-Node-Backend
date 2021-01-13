@@ -24,20 +24,20 @@ class AuthProvider extends Component {
         ls.set("email", response.data.email);
         ls.set("cuisine", response.data.cuisine);
         this.setState({isAuthenticated:isAuthenticated()})
-        debugger;
       return response;
     });
   };
    
   gotoDashboard = (history) => {
-    debugger;
       const cuisine = ls.get("cuisine");
-      const path='/dashboard';
+      let path='/dashboard';
       switch(cuisine){
         case 'Italian':
-          path='/dashbaord/italian';
+          path='/dashboard/italian';
+          break;
         case 'Chinese':
           path='/dashboard/Chinese';
+          break;
         case 'Baked':
           path='/dashboard/baked';
         break;
@@ -82,7 +82,6 @@ export const withContext = Component => {
       <AuthContext.Consumer>
         {
           globalState => {
-            console.log(globalState);
             return (
               <Component
                 {...globalState}

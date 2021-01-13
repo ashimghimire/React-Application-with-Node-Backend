@@ -41,7 +41,21 @@ const loadUser = function () {
     }
 }
 
+const loadCuisine = function () {
+    try {
+        const dataBuffer = fs.readFileSync('cuisine.json');
+        const dataJSON = dataBuffer.toString();
+        return JSON.parse(dataJSON)
+    } catch (e) {
+        console.log(e);
+        return []
+    }
+}
+
+
+
 module.exports = {
     addUser: addUser,
-    loadUser:loadUser
+    loadUser:loadUser,
+    loadCuisine:loadCuisine
 }

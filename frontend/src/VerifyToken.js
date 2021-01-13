@@ -1,16 +1,29 @@
 import {push} from "connected-react-router";
-
+import ls from 'local-storage';
 import {isAuthenticated} from './jwtUtil';
 
 export function verifyToken() {
   return (dispatch) => {
     if (isAuthenticated()) {
-      debugger;
       const segmentURL = window.location.pathname;
       if (segmentURL === '/login') {
-        debugger;
-        dispatch(push('/dashboard'));
-        debugger;
+        const cuisine = ls.get("cuisine");
+        let path='/dashboard';
+      switch(cuisine){
+        case 'Italian':
+          path='/dashboard/italian';
+          break;
+        case 'Chinese':
+          path='/dashboard/Chinese';
+          break;
+        case 'Baked':
+          path='/dashboard/baked';
+        break;
+        default:
+          break;          
+      }   
+        dispatch(push(path));
+        
       }
     }
   };

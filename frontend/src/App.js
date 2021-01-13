@@ -11,12 +11,11 @@ import '../src/App.css';
 class App extends React.Component {
   
   render() {
-    debugger;
         return <div>
                   <Switch>                  
                     <Route  path="/login" exact component={Login} />
                     <Route  path="/register" exact component={Register} />
-                    <Route  path="/dashboard" component={Dashboard}/>
+                    <PrivateRoute  path="/dashboard" component={Dashboard}/>
                     <Route path="/" exact component={Home}/>
                   </Switch>
               </div>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 function Chinese(props) {
     return (
         <div>
@@ -13,9 +15,9 @@ function Chinese(props) {
         </section>
         <h3>Chinese </h3>
             <ul className="list-group">
-                <li className="list-group-item">Hakka Noodles</li>
-                <li className="list-group-item">Fried Rice</li>
-                <li className="list-group-item">Dumplings</li>
+            {props.cuisine ? props.cuisine.map((item, index)=>{
+                return <li key={index} className="list-group-item">{item}</li>
+            }):''}
             </ul>
         </div>
     );

@@ -43,6 +43,7 @@ export class Login extends React.Component {
 }
 
 const mapDispatchToProps=(dispatch)=>{
+
   return {
     navigateToDashboard:()=>dispatch(push({pathname: '/dashboard', state: {stepIndex: 1, increment: true}}))
   }
@@ -56,9 +57,7 @@ export default connect(null,mapDispatchToProps)(withContext(withFormik({
     handleSubmit:(values, {props})=>{
        props.login(values).then((response)=>{
         if(response.status===200){
-            debugger;
-            props.navigateToDashboard();
-            debugger; 
+            props.gotoDashboard(props.history);
         }
        }); 
     }

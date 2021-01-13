@@ -9,13 +9,12 @@ function Baked(props) {
             justifyContent:'center',
             marginTop:'30vh'
         }}>
-
         </section>
         <h3>Baked</h3>
             <ul className="list-group">
-                <li className="list-group-item">Pineapple pastry</li>
-                <li className="list-group-item">Chocolate Cake</li>
-                <li className="list-group-item">Cookies</li>
+            {props.cuisine ? props.cuisine.map((item, index)=>{
+                return <li key={index} className="list-group-item">{item}</li>
+            }):''}  
             </ul>
         </div>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Italian(props) {
+    console.log(props);
     return (
         <div>
         <section style={{
@@ -12,9 +13,9 @@ function Italian(props) {
         </section>
             <h3>Italian</h3>
             <ul className="list-group">
-                <li className="list-group-item">Pasta</li>
-                <li className="list-group-item">Lasagne</li>
-                <li className="list-group-item">Chips</li>
+            {props.cuisine ? props.cuisine.map((item, index)=>{
+                return <li key={index} className="list-group-item">{item}</li>
+            }):''}
             </ul>
         </div>
     );

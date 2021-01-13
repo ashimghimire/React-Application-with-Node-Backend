@@ -11,7 +11,6 @@ import {ConnectedRouter} from 'connected-react-router';
 import {history} from './configureStore';
 import {Route, BrowserRouter, Router, Switch} from 'react-router-dom';
 Store.dispatch(verifyToken());
-console.log(history);
 ReactDOM.render(
   <React.StrictMode>
       <Provider store={Store}>
